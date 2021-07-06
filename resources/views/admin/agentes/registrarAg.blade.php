@@ -9,8 +9,8 @@
              <!-- Background image for card set in CSS! -->
           </div>
           <div class="card-body">
-            <h5 class="card-title text-center">Register</h5>
-            <form class="form-signin" method="POST" action="{{ route('register') }}">
+            <h5 class="card-title text-center"> <b> Register Agente </b></h5>
+            <form class="form-signin" method="POST" action="{{ route('agentregistrado') }}">
                 @csrf
 
               <div class="form-label-group">
@@ -24,8 +24,28 @@
               </div>
 
               <div class="form-label-group">
+                <input type="text" id="inputProf" class="form-control @error('profesion') is-invalid @enderror" name="profesion" value="{{ old('profesion') }}" placeholder="profesion" required autocomplete="profesion" autofocus>
+                <label for="inputProf">{{ __('Profesión....') }}</label>
+                @error('profesion')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+
+              <div class="form-label-group">
+                <input type="text" id="inputNitAg" class="form-control @error('nit_agente') is-invalid @enderror" name="nit_agente" value="{{ old('nit_agente') }}" placeholder="nit_agente" required autocomplete="nit_agente" autofocus>
+                <label for="inputNitAg">{{ __('Registro Empresa..') }}</label>
+                @error('nit_agente')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+
+              <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email address" required autocomplete="email">
-                <label for="inputEmail">Email address</label>
+                <label for="inputEmail">Email empresa</label>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -52,7 +72,7 @@
 
               <div class="form-label-group">
                 <input type="json" id="inputTelefono" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" placeholder="Telefono" required autocomplete="telefono" autofocus>
-                <label for="inputTelefono">{{ __('Telefono') }}</label>
+                <label for="inputTelefono">{{ __('Telefono priv..') }}</label>
                 @error('telefono')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -60,17 +80,8 @@
                 @enderror
               </div>
 
-              <div class="form-label-group">
-                <input type="date" id="inputFechaNac" class="form-control @error('fecha_nac') is-invalid @enderror" name="fecha_nac" value="{{ old('fecha_nac') }}" placeholder="Fecha de nacimiento" required autocomplete="fecha_nac" autofocus>
-                <label for="inputFechaNac">{{ __('Fecha de Naciemiento') }}</label>
-                @error('fecha_nac')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-              </div>
                 <div class="form-label-group">
-                    <input type="hidden" id="tipo_usuario"  name="tipo_usuario" value="1">
+                    <input type="hidden" id="tipo_usuario"  name="tipo_usuario" value="2">
                 </div>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
               <a class="d-block text-center mt-2 small" href="/login">Sign In</a>

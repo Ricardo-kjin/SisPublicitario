@@ -29,7 +29,23 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@index');
-Route::post('/home', 'HomeController@index');
-Route::put('/home', 'HomeController@index');
-Route::patch('/home', 'HomeController@index');
-Route::delete('/home', 'HomeController@index');
+
+//Route::get('/posts/create', 'PostsController@create');
+//Route::get('/posts/{post}', 'PostsController@show');
+//Route::get('/posts', 'PostsController@index');
+//Route::post('/posts', 'PostsController@store');
+//Route::get('/posts/{post}/edit', 'PostsController@edit');
+//Route::patch('/posts/{post}', 'PostsController@update');
+//Route::delete('/posts/{post}', 'PostsController@destroy');
+
+Route::resource('/users', 'UsersController');
+Route::resource('/grupos', 'GruposController');
+Route::resource('/accesos', 'AccesosController');
+
+Route::resource('/agentes', 'AgenteController');
+Route::get('/register/agent', 'AgenteController@agente')->name('agente');
+Route::post('/regisagent', 'AgenteController@storeagent')->name('agentregistrado');
+
+Route::resource('/empresas', 'EmpresaController@index');
+Route::get('/register/creat', 'EmpresaController@empresa')->name('empresa');
+Route::post('/registers', 'EmpresaController@storeemp')->name('registrado');

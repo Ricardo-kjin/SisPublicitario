@@ -2,21 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Grupo;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class GruposController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users=User::orderBy('id','desc')->get();
-        return view('admin.index',['users'=>$users]);
+        $grupos=Grupo::orderBy('id_grupos','desc')->get();
+        return view('admin.grupos.index', ['grupos'=>$grupos]);
     }
 
     /**
@@ -35,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.grupos.create');
     }
 
     /**
@@ -52,33 +42,33 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Grupo  $grupo
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Grupo $grupo)
     {
-        //
+        return view('admin.grupos.show', ['grupo'=>$grupo]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Grupo  $grupo
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Grupo $grupo)
     {
-        //
+        return view('admin.grupos.show', ['grupos'=>$grupo]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Grupo  $grupo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Grupo $grupo)
     {
         //
     }
@@ -86,10 +76,10 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Grupo  $grupo
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Grupo $grupo)
     {
         //
     }

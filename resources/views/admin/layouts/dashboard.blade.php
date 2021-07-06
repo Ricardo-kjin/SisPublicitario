@@ -12,13 +12,13 @@
   <title>SB Admin - Dashboard</title>
 
   <!-- Custom fonts for this template-->
-  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
 
   <!-- Page level plugin CSS-->
   <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/admin/sb-admin.css" rel="stylesheet">
+  <link href="/css/admin/sb-admin.css" rel="stylesheet">
 
 </head>
 
@@ -95,7 +95,7 @@
           <span>Dashboard</span>
         </a>
       </li>
-      <li class="nav-item dropdown">
+      {{--<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>
@@ -110,11 +110,21 @@
           <a class="dropdown-item" href="404.html">404 Page</a>
           <a class="dropdown-item" href="blank.html">Blank Page</a>
         </div>
+      </li>--}}
+      <li class="nav-item">
+        <a class="nav-link" href="/grupos">
+          <i class="fas fa-fw fa-unlock-alt"></i>
+          <span>Grupos</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Usuarios</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+          <i class="fas fa-fw fa-file-contract"></i>
+          <span>Publicaciones</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="tables.html">
@@ -173,24 +183,26 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery/jquery.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/vendor/jquery-easing/jquery.easing.js"></script>
 
   <!-- Page level plugin JavaScript-->
-  <script src="/vendor/chart.js/Chart.min.js"></script>
+  <script src="/vendor/chart.js/Chart.js"></script>
   <script src="/vendor/datatables/jquery.dataTables.js"></script>
   <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/admin/sb-admin.js"></script>
+  <script src="/js/admin/sb-admin.js"></script>
 
   <!-- Demo scripts for this page-->
-  <script src="js/admin/demo/datatables-demo.js"></script>
-  <script src="js/admin/demo/chart-area-demo.js"></script>
+  <script src="/js/admin/demo/datatables-demo.js"></script>
+  <script src="/js/admin/demo/chart-area-demo.js"></script>
 
+    @yield('js_user_page')
+    @yield('js_grupo_page')
 </body>
 
 </html>

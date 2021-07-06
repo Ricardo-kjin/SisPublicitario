@@ -41,9 +41,13 @@
                   </div>
                   <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
                   <div class="text-center">
-                    @if (Route::has('password.request'))
-                        <a class="small" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a></div>
-                    @endif
+
+                        <a class="d-block text-center mt-2 small" href="/register">Registrarse</a>
+
+                        @if (Route::has('password.request'))
+                            <a class="small" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a></div>
+                        @endif
+
                 </form>
               </div>
             </div>

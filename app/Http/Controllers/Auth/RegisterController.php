@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\TipoUsuario;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/admin';//RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -64,10 +65,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+            $tipo=TipoUsuario::create([
+                'profesion'=>'Particular',
+                'nit_agente'=>'ND',
+                'nombre_empresa'=>'ND',
+                'direccion_empresa'=>'ND',
+                'registro_empresa'=>'ND',
+                'telefono_empresa'=>'ND',
+                'nit_empresa'=>'ND',
+                'estado'=>'1',
+            ]);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'telefono' => $data['telefono'],
+            'fecha_nac' => $data['fecha_nac'],
+            'id_tipo_usuarios'=>$tipo->id,
+            'estado'=>'1',
         ]);
     }
 }

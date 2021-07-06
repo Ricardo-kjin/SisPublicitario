@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    @if (!\Request::is('login') && !\Request::is('register'))
+    @if (!\Request::is('login') && !\Request::is('register')&& !\Request::is('register/creat'))
         @include('partial.navbar')
     @endif
 
@@ -35,7 +35,7 @@
 
     @yield('content')
 
-    @if (!\Request::is('login') && !\Request::is('register'))
+    @if (!\Request::is('login') && !\Request::is('register')&& !\Request::is('register/creat'))
         @include('partial.footer')
     @endif
 
@@ -45,7 +45,7 @@
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+  <script src="/js/clean-blog.js"></script>
 <!--script src="/js/app.js"></script-->
     <!-- Scripts -->
     <!--script src="{{ asset('js/app.js') }}" defer></script-->

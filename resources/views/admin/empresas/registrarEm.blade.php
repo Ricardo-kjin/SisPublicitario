@@ -9,8 +9,8 @@
              <!-- Background image for card set in CSS! -->
           </div>
           <div class="card-body">
-            <h5 class="card-title text-center">Register</h5>
-            <form class="form-signin" method="POST" action="{{ route('register') }}">
+            <h5 class="card-title text-center"> <b> Registrar Empresa </b> </h5>
+            <form class="form-signin" method="POST" action="{{ route('registrado') }}">
                 @csrf
 
               <div class="form-label-group">
@@ -24,8 +24,48 @@
               </div>
 
               <div class="form-label-group">
+                <input type="text" id="inputNitEmp" class="form-control @error('nit_empresa') is-invalid @enderror" name="nit_empresa" value="{{ old('nit_empresa') }}" placeholder="Usernit_empresa" required autocomplete="nit_empresa" autofocus>
+                <label for="inputNitEmp">{{ __('NIT') }}</label>
+                @error('nit_empresa')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+
+              <div class="form-label-group">
+                <input type="text" id="inputNomEmp" class="form-control @error('nombre_empresa') is-invalid @enderror" name="nombre_empresa" value="{{ old('nombre_empresa') }}" placeholder="nombre_empresa" required autocomplete="nombre_empresa" autofocus>
+                <label for="inputNomEmp">{{ __('Nombre Empresa..') }}</label>
+                @error('nombre_empresa')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+
+              <div class="form-label-group">
+                <input type="text" id="inputDirEmp" class="form-control @error('direccion_empresa') is-invalid @enderror" name="direccion_empresa" value="{{ old('direccion_empresa') }}" placeholder="direccion_empresa" required autocomplete="direccion_empresa" autofocus>
+                <label for="inputDirEmp">{{ __('Direccion....') }}</label>
+                @error('direccion_empresa')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+
+              <div class="form-label-group">
+                <input type="text" id="inputRegEmp" class="form-control @error('registro_empresa') is-invalid @enderror" name="registro_empresa" value="{{ old('registro_empresa') }}" placeholder="registro_empresa" required autocomplete="registro_empresa" autofocus>
+                <label for="inputRegEmp">{{ __('Registro Empresa..') }}</label>
+                @error('registro_empresa')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+
+              <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email address" required autocomplete="email">
-                <label for="inputEmail">Email address</label>
+                <label for="inputEmail">Email empresa</label>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -52,7 +92,7 @@
 
               <div class="form-label-group">
                 <input type="json" id="inputTelefono" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" placeholder="Telefono" required autocomplete="telefono" autofocus>
-                <label for="inputTelefono">{{ __('Telefono') }}</label>
+                <label for="inputTelefono">{{ __('Telefono priv..') }}</label>
                 @error('telefono')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -61,16 +101,16 @@
               </div>
 
               <div class="form-label-group">
-                <input type="date" id="inputFechaNac" class="form-control @error('fecha_nac') is-invalid @enderror" name="fecha_nac" value="{{ old('fecha_nac') }}" placeholder="Fecha de nacimiento" required autocomplete="fecha_nac" autofocus>
-                <label for="inputFechaNac">{{ __('Fecha de Naciemiento') }}</label>
-                @error('fecha_nac')
+                <input type="text" id="inputTelEmp" class="form-control @error('telefono_empresa') is-invalid @enderror" name="telefono_empresa" value="{{ old('telefono_empresa') }}" placeholder="Fecha de nacimiento" required autocomplete="fecha_nac" autofocus>
+                <label for="inputTelEmp">{{ __('Telefono empresa..') }}</label>
+                @error('telefono_empresa')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
               </div>
                 <div class="form-label-group">
-                    <input type="hidden" id="tipo_usuario"  name="tipo_usuario" value="1">
+                    <input type="hidden" id="tipo_usuario"  name="tipo_usuario" value="2">
                 </div>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
               <a class="d-block text-center mt-2 small" href="/login">Sign In</a>
