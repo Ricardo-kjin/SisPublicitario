@@ -4,10 +4,22 @@
 
 <div class="row py-lg-2">
     <div class="col-md-6">
-        <h2>This is user List</h2>
+        <h2>Lista de Usuarios</h2>
     </div>
     <div class="col-md-6">
-        <a href="/users/create" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Create New User</a>
+
+            <a class="nav-link dropdown-toggle float-md-right" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="btn btn-success">Agregar Usuario </span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+
+              <a class="dropdown-item" href="{{ route('users.create') }}" style="color: green">Particular</a>
+              <a class="dropdown-item" href="{{ route('agentes.create') }}" style="color: green">Agente</a>
+              <a class="dropdown-item" href="{{ route('empresas.create') }}" style="color: green">Empresa</a>
+
+            </div>
+
+        <!--a href="/users/create" class="btn btn-success btn-lg float-md-right" role="button" aria-pressed="true">Crear Nuevo Usuario</a-->
     </div>
 </div>
 
@@ -25,9 +37,8 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Telefono</th>
+                <th>Tipo de Usuario</th>
                 <th>Grupo</th>
-                <th>Privilegio</th>
                 <th>Tools</th>
             </tr>
             </thead>
@@ -36,31 +47,41 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Telefono</th>
+                <th>Tipo de Usuario</th>
                 <th>Grupo</th>
-                <th>Privilegio</th>
                 <th>Tools</th>
             </tr>
             </tfoot>
             <tbody>
                 {{--@if(!\Auth::user()->hasRole('admin') && $user->hasRole('admin')) @continue; @endif--}}
                 {{--<tr {{ Auth::user()->id == $user->id ? 'bgcolor=#ddd' : '' }}>--}}
-                @foreach ($users as $user)
+                @foreach ($usuarios as $user)
                 <tr>
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->telefono}}</td>
+                    <td>{{$user->email}} </td>
+                    @if ($user->tipousuarios->nit_agente=="ND")
+                        @if ($user->tipousuarios->nit_empresa=="ND")
+                            <td>Particular</td>
+                        @else
+                            <td>Empresa</td>
+                        @endif
+
+                    @else
+                        <td>Agente</td>
+                    @endif
                     <td>
-                        -------
-                    </td>
+                        @if (isset($user->grupos))
+                            @foreach ($user->grupos as $grupo)
+                            <span class="badge badge-info">
+                                {{ $grupo->nombre }}
+                            </span>
+                            @endforeach
+                        @endif
                     <td>
-                        ..............................
-                    </td>
-                    <td>
-                        <a href="/users/{{ $user->id }}"><i class="fa fa-eye"></i></a>
-                        <a href="/users/{{ $user->id }}/edit"><i class="fa fa-edit"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#deleteModal" data-userid="{{$user->id}}"><i class="fas fa-trash-alt"></i></a>
+                        <a href="/users/{{ $user->id }}"><i class="fa fa-eye" ></i></a>
+                        <a href="/users/{{ $user->id }}/edit"><i class="fa fa-edit" style="color: yellow"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#deleteModal" data-userid="{{$user->id}}"><i class="success fas fa-trash-alt" style="color: red"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -73,19 +94,19 @@
     <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you shure you want to delete this?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">¿Estas seguguro de querer eliminar?</h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
         </button>
         </div>
-        <div class="modal-body">Select "delete" If you realy want to delete this user.</div>
+        <div class="modal-body">Seleccione "eliminar" si realmente desea eliminar este usuario.</div>
         <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
         <form method="POST" action="">
             @method('DELETE')
             @csrf
             <input type="hidden" id="user_id" name="user_id" value="">
-            <a class="btn btn-primary" onclick="$(this).closest('form').submit();">Delete</a>
+            <a class="btn btn-primary" onclick="$(this).closest('form').submit();">Eliminar</a>
         </form>
         </div>
     </div>
@@ -104,7 +125,7 @@
             var user_id = button.data('userid')
 
             var modal = $(this)
-            // modal.find('.modal-footer #user_id').val(user_id)
+            modal.find('.modal-footer #user_id').val(user_id)
             modal.find('form').attr('action','/users/' + user_id);
         })
     </script>

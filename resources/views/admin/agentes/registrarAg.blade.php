@@ -9,7 +9,7 @@
              <!-- Background image for card set in CSS! -->
           </div>
           <div class="card-body">
-            <h5 class="card-title text-center"> <b> Register Agente </b></h5>
+            <h5 class="card-title text-center"> <b> Registrar Agente </b></h5>
             <form class="form-signin" method="POST" action="{{ route('agentregistrado') }}">
                 @csrf
 
@@ -25,7 +25,7 @@
 
               <div class="form-label-group">
                 <input type="text" id="inputProf" class="form-control @error('profesion') is-invalid @enderror" name="profesion" value="{{ old('profesion') }}" placeholder="profesion" required autocomplete="profesion" autofocus>
-                <label for="inputProf">{{ __('Profesión....') }}</label>
+                <label for="inputProf">{{ __('Profesión') }}</label>
                 @error('profesion')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -35,7 +35,7 @@
 
               <div class="form-label-group">
                 <input type="text" id="inputNitAg" class="form-control @error('nit_agente') is-invalid @enderror" name="nit_agente" value="{{ old('nit_agente') }}" placeholder="nit_agente" required autocomplete="nit_agente" autofocus>
-                <label for="inputNitAg">{{ __('Registro Empresa..') }}</label>
+                <label for="inputNitAg">{{ __('NIT') }}</label>
                 @error('nit_agente')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
 
               <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email address" required autocomplete="email">
-                <label for="inputEmail">Email empresa</label>
+                <label for="inputEmail">Email</label>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

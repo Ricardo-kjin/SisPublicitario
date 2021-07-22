@@ -7,8 +7,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Grupo extends Model
 {
+    protected $primaryKey = 'id_grupos';
+
     public function accesos()
     {
-        return $this->BelongsToMany(Grupo::class,'accesos_grupos');
+        //(la clase a asociada a este modelo,mencion de la tabla pivote,el id local,el id de la tabla asociada)
+        return $this->BelongsToMany(Acceso::class,'accesos_grupos','id_grupos','id_accesos');
+    }
+    public function users()
+    {
+        //(la clase a asociada a este modelo,mencion de la tabla pivote,el id local,el id de la tabla asociada)
+        return $this->BelongsToMany(User::class,'grupos_grupos','id_grupos','id_users');
     }
 }

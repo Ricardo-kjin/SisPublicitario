@@ -38,6 +38,7 @@ Route::get('/admin', 'AdminController@index');
 //Route::patch('/posts/{post}', 'PostsController@update');
 //Route::delete('/posts/{post}', 'PostsController@destroy');
 
+//LOGIN
 Route::resource('/users', 'UsersController');
 Route::resource('/grupos', 'GruposController');
 Route::resource('/accesos', 'AccesosController');
@@ -46,6 +47,13 @@ Route::resource('/agentes', 'AgenteController');
 Route::get('/register/agent', 'AgenteController@agente')->name('agente');
 Route::post('/regisagent', 'AgenteController@storeagent')->name('agentregistrado');
 
-Route::resource('/empresas', 'EmpresaController@index');
+Route::resource('/empresas', 'EmpresaController');
 Route::get('/register/creat', 'EmpresaController@empresa')->name('empresa');
 Route::post('/registers', 'EmpresaController@storeemp')->name('registrado');
+
+//INMUEBLE
+Route::resource('/servicios', 'ServicioController');
+
+Route::resource('/zonas', 'ZonaController');
+
+Route::resource('/tipoinmuebles', 'TipoInmuebleController');

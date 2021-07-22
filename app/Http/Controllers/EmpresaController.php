@@ -28,7 +28,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        return view('admin.empresa.create');
+        return view('admin.empresas.create');
     }
 
     public function empresa()
@@ -44,6 +44,19 @@ class EmpresaController extends Controller
      */
     public function storeemp(Request $request)
     {
+        //validate the fields
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required|between:8,255|confirmed',
+            'password_confirmation' => 'required',
+            'nombre_empresa'=>'required|max:255',
+            'direccion_empresa'=>'required|max:255',
+            'registro_empresa'=>'required',
+            'telefono_empresa'=>'required',
+            'nit_empresa'=>'required',
+        ]);
+
         $time=new DateTime();
 
         $tipo=TipoUsuario::create([
@@ -66,7 +79,7 @@ class EmpresaController extends Controller
         'id_tipo_usuarios'=>$tipo->id,
         'estado'=>'1',
         ]);
-        return redirect('/users');
+        return redirect('/admin');
     }
     /**
      * Store a newly created resource in storage.
@@ -88,7 +101,7 @@ class EmpresaController extends Controller
             'estado'=>'1',
         ]);
 
-        User::create([
+        $user=User::create([
         'name' => $request['name'],
         'email' => $request['email'],
         'password' => Hash::make($request['password']),
@@ -97,7 +110,8 @@ class EmpresaController extends Controller
         'id_tipo_usuarios'=>$tipo->id,
         'estado'=>'1',
         ]);
-        return redirect('/admin');
+        $user->grupos()->attach($request->grupo);
+        return redirect('/users');
     }
 
     /**
@@ -131,7 +145,41 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validate the fields
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'nombre_empresa'=>'required|max:255',
+            'direccion_empresa'=>'required|max:255',
+            'registro_empresa'=>'required',
+            'telefono_empresa'=>'required',
+            'nit_empresa'=>'required',
+        ]);
+        $tipo=TipoUsuario::find($id);
+        $user=User::find($id);
+        //dd($user,$tipo);
+        $tipo->nombre_empresa=$request->nombre_empresa;
+        $tipo->direccion_empresa=$request->direccion_empresa;
+        $tipo->registro_empresa=$request->registro_empresa;
+        $tipo->telefono_empresa=$request->telefono_empresa;
+        $tipo->nit_empresa=$request->nit_empresa;
+        $tipo->save();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->telefono = $request->telefono;
+        if($request->password != null){
+            $user->password = Hash::make($request->password);
+        }
+        if (!$user->grupos->isEmpty()) {
+            $user->grupos()->dettach();
+        }
+
+        $user->save();
+        $user->grupos()->attach($request->grupo);
+
+        return redirect('/users');
+
     }
 
     /**
@@ -142,6 +190,14 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user=User::find($id);
+        $tipo=TipoUsuario::find($user->id);
+        //dd($tipo);
+        $tipo->estado=0;
+        $user->estado=0;
+        $tipo->save();
+        $user->grupos()->detach();
+        $user->save();
+        return redirect('/users');
     }
 }

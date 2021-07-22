@@ -20,6 +20,8 @@
   <!-- Custom styles for this template-->
   <link href="/css/admin/sb-admin.css" rel="stylesheet">
 
+  @yield('css_grupo_page')
+
 </head>
 
 <body id="page-top">
@@ -95,7 +97,8 @@
           <span>Dashboard</span>
         </a>
       </li>
-      {{--<li class="nav-item dropdown">
+      <!-- Modelo ejemplo de paquetes desplegable-->
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>
@@ -110,11 +113,33 @@
           <a class="dropdown-item" href="404.html">404 Page</a>
           <a class="dropdown-item" href="blank.html">Blank Page</a>
         </div>
-      </li>--}}
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Gestionar Inmueble</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <h6 class="dropdown-header">Caracteristicas:</h6>
+          <a class="dropdown-item" href="/zonas">Zonas</a>
+          <a class="dropdown-item" href="register.html">Tipo</a>
+          <a class="dropdown-item" href="forgot-password.html">servicios</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Registro de inmuebles:</h6>
+          <a class="dropdown-item" href="404.html">Registra inmueble</a>
+          <a class="dropdown-item" href="blank.html">"#fotos"</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/accesos">
+          <i class="fas fa-fw fa-user-tie"></i>
+          <span>Gestionar Accesos</span></a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="/grupos">
-          <i class="fas fa-fw fa-unlock-alt"></i>
-          <span>Grupos</span></a>
+          <i class="fas fa-fw fa-user-tie"></i>
+          <span>Gestionar Grupos</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/users">
@@ -203,6 +228,7 @@
 
     @yield('js_user_page')
     @yield('js_grupo_page')
+    @yield('js_acceso_page')
 </body>
 
 </html>
