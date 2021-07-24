@@ -17,10 +17,10 @@ class CreatePrivilegiosTable extends Migration
             $table->unsignedBigInteger('id_grupos');
             $table->unsignedBigInteger('id_accesos');
             $table->boolean('estado');
-            $table->foreign('id_grupos')->references('id_grupos')->on('grupos')
-            ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_accesos')->references('id_accesos')->on('accesos')
-            ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('id_grupos')->references('id_grupos')->on('grupos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_accesos')->references('id_accesos')->on('accesos')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

@@ -11,7 +11,15 @@
         <div class="card-body">
             <h5 class="card-title">Acceso</h5>
             <p class="card-text">
-                ...........
+                @if ($grupo->accesos != null)
+
+                    @foreach ($grupo->accesos as $acceso)
+                        <span class="badge badge-info">
+                            {{ $acceso->nombre }}
+                        </span>
+                    @endforeach
+
+                @endif
             </p>
         </div>
         <div class="card-footer">

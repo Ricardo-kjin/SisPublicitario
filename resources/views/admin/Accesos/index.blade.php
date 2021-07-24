@@ -4,10 +4,10 @@
 
 <div class="row py-lg-2">
     <div class="col-md-6">
-        <h2>Lista de Grupos</h2>
+        <h2>Lista de Accesos</h2>
     </div>
     <div class="col-md-6">
-        <a href="/grupos/create" class="btn btn-success btn-lg float-md-right" role="button" aria-pressed="true"><b class="fas fa-plus"></b> Agregar Grupo  </a>
+        <a href="/accesos/create" class="btn btn-success btn-lg float-md-right" role="button" aria-pressed="true"><b class="fas fa-plus"></b> Agregar Acceso  </a>
     </div>
 </div>
 
@@ -22,40 +22,30 @@
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Grupo</th>
-                <th>Descripcion</th>
                 <th>Acceso</th>
+                <th>Descripcion</th>
                 <th>Tools</th>
             </tr>
             </thead>
             <tfoot>
             <tr>
                 <th>Id</th>
-                <th>Grupo</th>
-                <th>Descripcion</th>
                 <th>Acceso</th>
+                <th>Descripcion</th>
                 <th>Tools</th>
             </tr>
             </tfoot>
             <tbody>
-                @foreach ($grupos as $grupo)
+                @foreach ($accesos as $acceso)
                     <tr>
-                        <td>{{ $grupo['id_grupos'] }}</td>
-                        <td>{{ $grupo['nombre'] }}</td>
-                        <td>{{ $grupo['descripcion'] }}</td>
+                        <td>{{ $acceso['id_accesos'] }}</td>
+                        <td>{{ $acceso['nombre'] }}</td>
+                        <td>{{ $acceso['descripcion'] }}</td>
+
                         <td>
-                            @if ($grupo->accesos != null)
-                                @foreach ($grupo->accesos as $acceso)
-                                    <span class="badge badge-info">
-                                        {{ $acceso->nombre }}
-                                    </span>
-                                @endforeach
-                            @endif
-                        </td>
-                        <td width="8%">
-                            <a href="/grupos/{{ $grupo['id_grupos'] }}"><i class="fa fa-eye"></i></a>
-                            <a href="/grupos/{{ $grupo['id_grupos'] }}/edit"><i class="fa fa-edit"></i></a>
-                            <a href="#" data-toggle="modal" data-target="#deleteModal" data-grupoid="{{$grupo['id_grupos']}}"><i class="fas fa-trash-alt"></i></a>
+                            <a href="/accesos/{{ $acceso['id_accesos'] }}"><i class="fa fa-eye"></i></a>
+                            <a href="/accesos/{{ $acceso['id_accesos'] }}/edit"><i class="fa fa-edit"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#deleteModal" data-accesoid="{{$acceso['id_accesos']}}"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -75,30 +65,30 @@
             <span aria-hidden="true">×</span>
         </button>
         </div>
-        <div class="modal-body">Seleccione "eliminar" si realmente desea eliminar este grupo.</div>
+        <div class="modal-body">Seleccione "eliminar" si realmente desea eliminar este acceso.</div>
         <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
         <form method="POST" action="">
             @method('DELETE')
             @csrf
-            <input type="hidden" id="grupo_id" name="grupo_id" value="">
-            <a class="btn btn-primary" onclick="$(this).closest('form').submit();">Delete</a>
+            <input type="hidden" id="acceso_id" name="acceso_id" value="">
+            <a class="btn btn-primary" onclick="$(this).closest('form').submit();">Eliminar</a>
         </form>
         </div>
     </div>
     </div>
 </div>
 
-@section('js_grupo_page')
+@section('js_acceso_page')
 
 <script>
     $('#deleteModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
-        var grupo_id = button.data('grupoid')
+        var acceso_id = button.data('accesoid')
 
         var modal = $(this)
-        modal.find('.modal-footer #grupo_id').val(grupo_id)
-        modal.find('form').attr('action','/grupos/' + grupo_id);
+        modal.find('.modal-footer #acceso_id').val(acceso_id)
+        modal.find('form').attr('action','/accesos/' + acceso_id);
     })
 </script>
 

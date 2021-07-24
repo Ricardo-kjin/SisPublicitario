@@ -5,14 +5,12 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3><b>Empresa:</b> {{$user->name}}</h3>
-            <h3><b>Nombre Socio:</b> {{$user->tipousuarios->nombre_empresa}}</h3>
+            <h3><b>Agente:</b> {{$user->name}}</h3>
             <h6><b>Email:</b> {{$user->email}}</h6>
             <h6><b>Numemo de Publicaciones:</b> 5</h6>
             <h6><b>Telefono: </b>{{$user->telefono}}</h6>
-            <h6><b>Contacto para la Empresa: </b>{{$user->tipousuarios->telefono_empresa}}</h6>
-            <h6><b>Nit:</b> {{$user->tipousuarios->nit_empresa}}</h6>
-            <h6><b>Direccion:</b> {{$user->tipousuarios->direccion_empresa}}</h6>
+            <h6><b>Nit:</b> {{$user->tipousuarios->nit_agente}}</h6>
+            <h6><b>Profesion:</b> {{$user->tipousuarios->profesion}}</h6>
         </div>
         <div class="card-body">
             <h5 class="card-title">Grupo</h5>

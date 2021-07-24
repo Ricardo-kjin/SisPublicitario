@@ -13,11 +13,19 @@
         <div class="card-body">
             <h5 class="card-title">Grupo</h5>
             <p class="card-text">
-
+                <span class="badge badge-success">
+                    {{ $user->grupos->first()->nombre }}
+                </span>
             </p>
-            <h5 class="card-title">Privilegios</h5>
+            <h5 class="card-title">Acceso</h5>
             <p class="card-text">
-
+                @if ($user->grupos->isNotEmpty())
+                    @foreach ($user->grupos->first()->accesos as $acceso)
+                        <span class="badge badge-success">
+                            {{ $acceso->nombre }}
+                        </span>
+                    @endforeach
+                @endif
             </p>
 
         </div>

@@ -14,7 +14,8 @@ class AccesosController extends Controller
      */
     public function index()
     {
-        //
+        $acceso=Acceso::where('estado','1')->orderBy('id_accesos')->get();
+        return view('admin.accesos.index',['accesos'=>$acceso]);
     }
 
     /**
@@ -24,7 +25,7 @@ class AccesosController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.accesos.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class AccesosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'nombre'=>'required|max:150',
+            'descripcion'=>'required|max:500',
+        ]);
+
+        $acceso=new Acceso();
+        $acceso->nombre=$request->nombre;
+        $acceso->descripcion=$request->descripcion;
+        $acceso->estado=1;
+        $acceso->save();
+        return redirect('/accesos');
     }
 
     /**
@@ -46,7 +58,7 @@ class AccesosController extends Controller
      */
     public function show(Acceso $acceso)
     {
-        //
+        return view('admin.accesos.show',['acceso'=>$acceso]);
     }
 
     /**
@@ -57,7 +69,7 @@ class AccesosController extends Controller
      */
     public function edit(Acceso $acceso)
     {
-        //
+        return view('admin.accesos.edit',['acceso'=>$acceso]);
     }
 
     /**
@@ -69,7 +81,15 @@ class AccesosController extends Controller
      */
     public function update(Request $request, Acceso $acceso)
     {
-        //
+        // dd($acceso,$request);
+        $request->validate([
+            'nombre'=>'required|max:150',
+            'descripcion'=>'required|max:500',
+        ]);
+        $acceso->nombre=$request->nombre;
+        $acceso->descripcion=$request->descripcion;
+        $acceso->save();
+        return redirect('/accesos');
     }
 
     /**
@@ -80,6 +100,9 @@ class AccesosController extends Controller
      */
     public function destroy(Acceso $acceso)
     {
-        //
+        $acceso->estado=0;
+        $acceso->save();
+        // $acceso->delete();
+        return redirect('/accesos');
     }
 }
