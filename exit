@@ -1,0 +1,48 @@
+[33mcommit f2e24828dd5b5c829e1e7b918e60670aace6fb32[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Rikrdo <rikrdoramirez1993@gmail.com>
+Date:   Sun Jul 25 20:48:46 2021 -0400
+
+    Terminado CRUD de zonas, servicios, tipo y registrar inmuebles
+
+[33mcommit 57f383ee6c78dd556d84e235d1cf66b504629905[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Rikrdo <rikrdoramirez1993@gmail.com>
+Date:   Wed Jul 21 20:27:29 2021 -0400
+
+    Terminado el Control de Usuarios
+
+[33mcommit 6ca65ac896e1c8057b0aefc773ab47d82e68a331[m
+Merge: 9293fe3 0289e27
+Author: Rikrdo <rikrdoramirez1993@gmail.com>
+Date:   Tue Jul 6 21:26:34 2021 -0400
+
+    Registrar empresa, agente, y particular
+
+[33mcommit 9293fe30da2a042b683877bdb3023cd0948d2501[m
+Author: Rikrdo <rikrdoramirez1993@gmail.com>
+Date:   Tue Jul 6 07:09:18 2021 -0400
+
+    Agregado las inserciones de empresa, agente
+
+[33mcommit 0289e27862de51bd872af0e807825b8fb3c4b892[m
+Author: IsaiasMCC <isaisvhsyw@gmail.com>
+Date:   Sun Jul 4 11:48:03 2021 -0400
+
+    migraciones
+
+[33mcommit 9c86b02b8db4a66f114d7296aad662b31fe3c501[m
+Author: Rikrdo <rikrdoramirez1993@gmail.com>
+Date:   Sat Jul 3 19:51:35 2021 -0400
+
+    Terminado el template para login, register y el admin
+
+[33mcommit f83d97bdfa631110e3fb31271f4da1220876c49e[m
+Author: Rikrdo <rikrdoramirez1993@gmail.com>
+Date:   Sat Jul 3 10:12:53 2021 -0400
+
+    Carga del front-end
+
+[33mcommit e7b6bc8bd99e1912b3f2195ee6358ab45db2f485[m
+Author: Rikrdo <rikrdoramirez1993@gmail.com>
+Date:   Sat Jul 3 01:46:49 2021 -0400
+
+    first commit

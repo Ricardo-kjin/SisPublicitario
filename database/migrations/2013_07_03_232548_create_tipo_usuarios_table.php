@@ -28,7 +28,7 @@ class CreateTipoUsuariosTable extends Migration
             //$table->foreign('id_usuarios')->references('id_usuarios')->on('usuarios')
             //->onDelete('cascade')->onUpdate('cascade');
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.
