@@ -14,7 +14,8 @@ class PlaneController extends Controller
      */
     public function index()
     {
-        //
+        $planes=Plane::where('estado','1')->orderBy('id_planes','desc')->get();
+        return view('venta.planes.index',['planes'=>$planes]);
     }
 
     /**
@@ -25,6 +26,7 @@ class PlaneController extends Controller
     public function create()
     {
         //
+        return view('venta.planes.create');
     }
 
     /**
@@ -36,6 +38,17 @@ class PlaneController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nombre'=>'required|max:150',
+            'descripcion'=>'required|max:700',
+        ]);
+
+        $plane=new Plane();
+        $plane->nombre=$request->nombre;
+        $plane->descripcion=$request->descripcion;
+        $plane->estado=1;
+        $plane->save();
+        return redirect('/planes');
     }
 
     /**
@@ -46,7 +59,7 @@ class PlaneController extends Controller
      */
     public function show(Plane $plane)
     {
-        //
+        return view('venta.planes.create',['plane'=>$plane]);
     }
 
     /**
@@ -57,7 +70,7 @@ class PlaneController extends Controller
      */
     public function edit(Plane $plane)
     {
-        //
+        return view('venta.planes.edit',['plane'=>$plane]);
     }
 
     /**
@@ -69,7 +82,14 @@ class PlaneController extends Controller
      */
     public function update(Request $request, Plane $plane)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|max:150',
+            'descripcion'=>'required|max:700',
+        ]);
+        $plane->nombre=$request->nombre;
+        $plane->descripcion=$request->descripcion;
+        $plane->save();
+        return redirect('/planes');
     }
 
     /**
@@ -80,6 +100,9 @@ class PlaneController extends Controller
      */
     public function destroy(Plane $plane)
     {
-        //
+        $plane->estado=0;
+        $plane->save();
+        // $tipoinmueble->delete();
+        return redirect('/planes');
     }
 }

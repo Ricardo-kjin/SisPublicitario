@@ -29,6 +29,12 @@ trait HasGrupos
         return $this->belongsTo(TipoUsuario::class, 'id_tipo_usuarios');
     }
 
+    //un usario tiene muchos inmuebles
+
+    public function inmuebles (){
+        return $this->hasMany(Inmueble::class);
+    }
+
     public function obtenerIp(){
         $ip=0;
         return  $ip;

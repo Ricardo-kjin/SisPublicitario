@@ -14,7 +14,8 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        //
+        $servicios=Servicio::orderBy('id','desc')->get();
+        return view('inmueble.servicios.index',['servicios'=>$servicios]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        //
+        return view('inmueble.servicios.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|max:150',
+            'empresa'=>'required|max:100',
+            'descripcion'=>'required',
+        ]);
+
+        $servicio=new Servicio();
+        $servicio->nombre=$request->nombre;
+        $servicio->descripcion=$request->descripcion;
+        $servicio->empresa=$request->empresa;
+        $servicio->save();
+        return redirect('/servicios');
     }
 
     /**
@@ -46,7 +58,7 @@ class ServicioController extends Controller
      */
     public function show(Servicio $servicio)
     {
-        //
+        return view('inmueble.servicios.show',['servicio'=>$servicio]);
     }
 
     /**
@@ -57,7 +69,7 @@ class ServicioController extends Controller
      */
     public function edit(Servicio $servicio)
     {
-        //
+        return view('inmueble.servicios.edit',['servicio'=>$servicio]);
     }
 
     /**
@@ -69,7 +81,16 @@ class ServicioController extends Controller
      */
     public function update(Request $request, Servicio $servicio)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|max:150',
+            'empresa'=>'required|max:100',
+            'descripcion'=>'required',
+        ]);
+        $servicio->nombre=$request->nombre;
+        $servicio->descripcion=$request->descripcion;
+        $servicio->empresa=$request->empresa;
+        $servicio->save();
+        return redirect('/servicios');
     }
 
     /**
@@ -80,6 +101,7 @@ class ServicioController extends Controller
      */
     public function destroy(Servicio $servicio)
     {
-        //
+        $servicio->delete();
+        return redirect('/servicios');
     }
 }

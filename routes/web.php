@@ -57,3 +57,23 @@ Route::resource('/servicios', 'ServicioController');
 Route::resource('/zonas', 'ZonaController');
 
 Route::resource('/tipoinmuebles', 'TipoInmuebleController');
+
+Route::resource('/inmuebles','InmuebleController');
+Route::resource('/proyectos','ProyectoController');
+Route::resource('/apartamentos','ApartamentoController');
+Route::resource('/localcomercials', 'LocalComercialController');
+Route::resource('/lotes', 'LoteController');
+//Route::resource('/tipoinmuebles', 'TipoInmuebleController');
+
+
+//PAGOS TRANSACCIONALES
+Route::resource('/planes','PlaneController');//Y
+Route::resource('/tipopagos','TipopagoController');//Y
+Route::resource('/ofertas','OfertaController');//Y
+Route::resource('/facturas','FecturaController');
+Route::resource('/notaventas','NotaventaController');
+
+//PUBLICAIONES
+
+Route::resource('/tipopublicacions','TipopublicacionController');
+
