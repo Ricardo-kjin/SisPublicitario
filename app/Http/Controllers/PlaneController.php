@@ -14,13 +14,10 @@ class PlaneController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
+
         $planes = Plane::all();
         return view('planes.index');
-=======
-        $planes=Plane::where('estado','1')->orderBy('id_planes','desc')->get();
-        return view('venta.planes.index',['planes'=>$planes]);
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
+
     }
 
     /**
@@ -30,12 +27,10 @@ class PlaneController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
-        return view('planes.create');
-=======
-        //
+
+       
         return view('venta.planes.create');
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
+
     }
 
     /**
@@ -46,38 +41,12 @@ class PlaneController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        $validor = Validator::make($request->all(),  [
-            'nombre' => ['required'],
-            'descripcion' => ['required'],
-            'cant_public' => ['required'],
-            
-        ]);
-        
-        if(!$validor->fails())
-        {
-          $grupo = Plane::create([
-              'nombre' => $request['nombre'],
-              'descripcion' => $request['descripcion'],
-              'cant_public' => $request['cant_public'],
-              'estado' => true
-          ]);
-          return redirect()->route('planes.index');
-        }
-=======
-        //
-        $request->validate([
-            'nombre'=>'required|max:150',
-            'descripcion'=>'required|max:700',
-        ]);
-
         $plane=new Plane();
         $plane->nombre=$request->nombre;
         $plane->descripcion=$request->descripcion;
         $plane->estado=1;
         $plane->save();
         return redirect('/planes');
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
     }
 
     /**
@@ -88,11 +57,10 @@ class PlaneController extends Controller
      */
     public function show(Plane $plane)
     {
-<<<<<<< HEAD
-        return view('planes.show', [$plane => 'plane']);
-=======
+
+
         return view('venta.planes.create',['plane'=>$plane]);
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
+
     }
 
     /**
