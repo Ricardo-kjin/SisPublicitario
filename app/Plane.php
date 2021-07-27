@@ -13,6 +13,9 @@ class Plane extends Model
     public function ofertas (){
         return $this->hasMany(Oferta::class,'id_planes','id_planes');
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
 }
