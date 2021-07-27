@@ -59,14 +59,11 @@ Route::resource('/zonas', 'ZonaController');
 
 Route::resource('/tipoinmuebles', 'TipoInmuebleController');
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 // Api
 Route::get('/planesApi', 'PlanApiController@index')->name('planes.index');
 Route::get('/planesApi/{id}', 'PlanApiController@show')->name('planes.show');
-=======
-=======
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
+
 Route::resource('/inmuebles','InmuebleController');
 Route::resource('/proyectos','ProyectoController');
 Route::resource('/apartamentos','ApartamentoController');
@@ -86,7 +83,4 @@ Route::resource('/notaventas','NotaventaController');
 
 Route::resource('/tipopublicacions','TipopublicacionController');
 
-<<<<<<< HEAD
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
-=======
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
+
