@@ -14,11 +14,13 @@ class CreateAccesosGruposTable extends Migration
     public function up()
     {
         Schema::create('accesos_grupos', function (Blueprint $table) {
-            $table->unsignedInteger('id_grupos');
-            $table->unsignedInteger('id_accesos');
+            $table->unsignedBigInteger('id_grupos');
+            $table->unsignedBigInteger('id_accesos');
 
-            $table->foreign('id_grupos')->references('id_grupos')->on('grupos')->onDelete('cascade');
-            $table->foreign('id_accesos')->references('id_accesos')->on('accesos')->onDelete('cascade');
+            $table->foreign('id_grupos')->references('id_grupos')->on('grupos')->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->foreign('id_accesos')->references('id_accesos')->on('accesos')->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->primary(['id_grupos','id_accesos']);
         });

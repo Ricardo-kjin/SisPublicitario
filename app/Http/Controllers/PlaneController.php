@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Plane;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 class PlaneController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class PlaneController extends Controller
      */
     public function index()
     {
-        //
+        $planes = Plane::all();
+        return view('planes.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class PlaneController extends Controller
      */
     public function create()
     {
-        //
+        return view('planes.create');
     }
 
     /**
@@ -35,7 +36,23 @@ class PlaneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validor = Validator::make($request->all(),  [
+            'nombre' => ['required'],
+            'descripcion' => ['required'],
+            'cant_public' => ['required'],
+            
+        ]);
+        
+        if(!$validor->fails())
+        {
+          $grupo = Plane::create([
+              'nombre' => $request['nombre'],
+              'descripcion' => $request['descripcion'],
+              'cant_public' => $request['cant_public'],
+              'estado' => true
+          ]);
+          return redirect()->route('planes.index');
+        }
     }
 
     /**
@@ -46,7 +63,7 @@ class PlaneController extends Controller
      */
     public function show(Plane $plane)
     {
-        //
+        return view('planes.show', [$plane => 'plane']);
     }
 
     /**

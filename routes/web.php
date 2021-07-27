@@ -1,5 +1,6 @@
 <?php
 
+use App\Publicacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -57,3 +58,7 @@ Route::resource('/servicios', 'ServicioController');
 Route::resource('/zonas', 'ZonaController');
 
 Route::resource('/tipoinmuebles', 'TipoInmuebleController');
+
+// Api
+Route::get('/planesApi', 'PlanApiController@index')->name('planes.index');
+Route::get('/planesApi/{id}', 'PlanApiController@show')->name('planes.show');

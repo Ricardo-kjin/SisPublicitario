@@ -14,8 +14,8 @@ class CreateAccesosUsersTable extends Migration
     public function up()
     {
         Schema::create('accesos_users', function (Blueprint $table) {
-            $table->unsignedInteger('id_user');
-            $table->unsignedInteger('id_accesos');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_accesos');
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_accesos')->references('id_accesos')->on('accesos')->onDelete('cascade');

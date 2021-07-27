@@ -14,11 +14,13 @@ class CreateGruposUsersTable extends Migration
     public function up()
     {
         Schema::create('grupos_users', function (Blueprint $table) {
-            $table->unsignedInteger('id_user');
-            $table->unsignedInteger('id_grupos');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_grupos');
 
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_grupos')->references('id_grupos')->on('grupos')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->foreign('id_grupos')->references('id_grupos')->on('grupos')->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->primary(['id_user','id_grupos']);
         });
