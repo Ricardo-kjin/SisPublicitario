@@ -58,7 +58,7 @@ class PlaneController extends Controller
     public function show(Plane $plane)
     {
 
-
+// :v
         return view('venta.planes.create',['plane'=>$plane]);
 
     }
