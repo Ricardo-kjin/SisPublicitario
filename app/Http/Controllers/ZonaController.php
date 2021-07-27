@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Zona;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ZonaController extends Controller
 {
@@ -14,7 +16,8 @@ class ZonaController extends Controller
      */
     public function index()
     {
-        $zonas=Zona::orderBy('id','des')->get();
+        $zonas=Zona::orderBy('id','desc')->get();
+        return view('inmueble.zonas.index',['zonas'=>$zonas]);
 
     }
 
@@ -25,7 +28,7 @@ class ZonaController extends Controller
      */
     public function create()
     {
-        //
+        return view('inmueble.zonas.create');
     }
 
     /**
@@ -36,7 +39,18 @@ class ZonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|max:150',
+            'empresa'=>'required|max:100',
+            'descripcion'=>'required',
+        ]);
+
+        $zona=new Zona();
+        $zona->nombre=$request->nombre;
+        $zona->descripcion=$request->descripcion;
+        $zona->url='prueba';
+        $zona->save();
+        return redirect('/zonas');
     }
 
     /**
@@ -47,7 +61,7 @@ class ZonaController extends Controller
      */
     public function show(Zona $zona)
     {
-        //
+        return view('inmueble.zonas.show',['zona'=>$zona]);
     }
 
     /**
@@ -58,7 +72,7 @@ class ZonaController extends Controller
      */
     public function edit(Zona $zona)
     {
-        //
+        return view('inmueble.zonas.edit',['zona'=>$zona]);
     }
 
     /**
@@ -70,7 +84,22 @@ class ZonaController extends Controller
      */
     public function update(Request $request, Zona $zona)
     {
-        //
+        if (Gate::allows('isAdmin')) {
+            $usuario=Auth::user()->id;
+            dd('es administrador' . ':' .$usuario);
+        }else {
+            dd('no es administrador');
+        }
+        $request->validate([
+            'nombre'=>'required|max:150',
+            //'url'=>'required',
+            'descripcion'=>'required',
+        ]);
+        $zona->nombre=$request->nombre;
+        $zona->descripcion=$request->descripcion;
+        //$zona->url=$request->descripcion;
+        $zona->save();
+        return redirect('/zonas');
     }
 
     /**
@@ -81,6 +110,7 @@ class ZonaController extends Controller
      */
     public function destroy(Zona $zona)
     {
-        //
+        $zona->delete();
+        return redirect('/zonas');
     }
 }

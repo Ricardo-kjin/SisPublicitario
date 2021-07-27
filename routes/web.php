@@ -59,6 +59,28 @@ Route::resource('/zonas', 'ZonaController');
 
 Route::resource('/tipoinmuebles', 'TipoInmuebleController');
 
+<<<<<<< HEAD
 // Api
 Route::get('/planesApi', 'PlanApiController@index')->name('planes.index');
 Route::get('/planesApi/{id}', 'PlanApiController@show')->name('planes.show');
+=======
+Route::resource('/inmuebles','InmuebleController');
+Route::resource('/proyectos','ProyectoController');
+Route::resource('/apartamentos','ApartamentoController');
+Route::resource('/localcomercials', 'LocalComercialController');
+Route::resource('/lotes', 'LoteController');
+//Route::resource('/tipoinmuebles', 'TipoInmuebleController');
+
+
+//PAGOS TRANSACCIONALES
+Route::resource('/planes','PlaneController');//Y
+Route::resource('/tipopagos','TipopagoController');//Y
+Route::resource('/ofertas','OfertaController');//Y
+Route::resource('/facturas','FecturaController');
+Route::resource('/notaventas','NotaventaController');
+
+//PUBLICAIONES
+
+Route::resource('/tipopublicacions','TipopublicacionController');
+
+>>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b

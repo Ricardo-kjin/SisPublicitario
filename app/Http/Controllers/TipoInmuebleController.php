@@ -14,7 +14,8 @@ class TipoInmuebleController extends Controller
      */
     public function index()
     {
-        //
+        $tipoinmuebles=TipoInmueble::orderBy('id')->get();
+        return view('inmueble.tipoinmuebles.index',['tipoinmuebles'=>$tipoinmuebles]);
     }
 
     /**
@@ -24,7 +25,7 @@ class TipoInmuebleController extends Controller
      */
     public function create()
     {
-        //
+        return view('inmueble.tipoinmuebles.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class TipoInmuebleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|max:150',
+            'descripcion'=>'required|max:700',
+        ]);
+
+        $tipoinmueble=new tipoinmueble();
+        $tipoinmueble->nombre=$request->nombre;
+        $tipoinmueble->descripcion=$request->descripcion;
+        // $tipoinmueble->estado=1;
+        $tipoinmueble->save();
+        return redirect('/tipoinmuebles');
     }
 
     /**
@@ -44,9 +55,10 @@ class TipoInmuebleController extends Controller
      * @param  \App\TipoInmueble  $tipoInmueble
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoInmueble $tipoInmueble)
+    public function show(TipoInmueble $tipoinmueble)
     {
-        //
+
+        return view('inmueble.tipoinmuebles.show',['tipoinmueble'=>$tipoinmueble]);
     }
 
     /**
@@ -55,9 +67,10 @@ class TipoInmuebleController extends Controller
      * @param  \App\TipoInmueble  $tipoInmueble
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoInmueble $tipoInmueble)
+    public function edit(TipoInmueble $tipoinmueble)
     {
-        //
+        // dd($tipoinmueble->id);
+        return view('inmueble.tipoinmuebles.edit',['tipoinmueble'=>$tipoinmueble]);
     }
 
     /**
@@ -67,19 +80,29 @@ class TipoInmuebleController extends Controller
      * @param  \App\TipoInmueble  $tipoInmueble
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoInmueble $tipoInmueble)
+    public function update(Request $request, TipoInmueble $tipoinmueble)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|max:150',
+            'descripcion'=>'required|max:700',
+        ]);
+        $tipoinmueble->nombre=$request->nombre;
+        $tipoinmueble->descripcion=$request->descripcion;
+        $tipoinmueble->save();
+        return redirect('/tipoinmuebles');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TipoInmueble  $tipoInmueble
+     * @param  \App\Tipoinmueble  $tipoinmueble
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoInmueble $tipoInmueble)
+    public function destroy(Tipoinmueble $tipoinmueble)
     {
-        //
+
+        $tipoinmueble->delete();
+        // $tipoinmueble->delete();
+        return redirect('/tipoinmuebles');
     }
 }

@@ -75,6 +75,9 @@
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i>
+          @auth
+          {{ Auth::user()->name }} {{ Auth::user()->grupos->isNotEmpty() ? Auth::user()->grupos->first()->nombre : "" }}
+          @endauth
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="#">Settings</a>
@@ -122,12 +125,44 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Caracteristicas:</h6>
           <a class="dropdown-item" href="/zonas">Zonas</a>
-          <a class="dropdown-item" href="register.html">Tipo</a>
-          <a class="dropdown-item" href="forgot-password.html">servicios</a>
+          <a class="dropdown-item" href="/tipoinmuebles">Tipo</a>
+          <a class="dropdown-item" href="/servicios">Servicios</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Registro de inmuebles:</h6>
-          <a class="dropdown-item" href="404.html">Registra inmueble</a>
+          <a class="dropdown-item" href="/inmuebles">Inmueble</a>
           <a class="dropdown-item" href="blank.html">"#fotos"</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Gestionar Pagos</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <h6 class="dropdown-header">Caracteristicas:</h6>
+          <a class="dropdown-item" href="/planes">Planes</a>
+          <a class="dropdown-item" href="/ofertas">Oferta</a>
+          <a class="dropdown-item" href="/tipopagos">Tipo de pagos</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Transacciones:</h6>
+          <a class="dropdown-item" href="/inmuebles">#Factura</a>
+          <a class="dropdown-item" href="blank.html">"#Nota Venta"</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Gestion Publicacion</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <h6 class="dropdown-header">Caracteristicas:</h6>
+          <a class="dropdown-item" href="/tipopublicacions">Tipo Publicaciones</a>
+          <a class="dropdown-item" href="/ofertas">#publicacion</a>
+          <a class="dropdown-item" href="/tipopagos">#</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Transacciones:</h6>
+          <a class="dropdown-item" href="/inmuebles">#</a>
+          <a class="dropdown-item" href="blank.html">"#"</a>
         </div>
       </li>
       <li class="nav-item">
@@ -229,6 +264,23 @@
     @yield('js_user_page')
     @yield('js_grupo_page')
     @yield('js_acceso_page')
+
+    {{-- Inmuebles --}}
+    @yield('js_servicio_page')
+    @yield('js_tipoinmueble_page')
+    @yield('js_zona_page')
+    @yield('js_inmueble_page')
+
+    @yield('js_oferta_page')
+    @yield('js_plane_page')
+    @yield('js_tipopago_page')
+
+    @yield('js_tipopublicacion_page')
+
+
+
+
+
 </body>
 
 </html>
