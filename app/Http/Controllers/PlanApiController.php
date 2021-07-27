@@ -13,7 +13,7 @@ class PlanApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function obtenerPlanes()
     {
         $planes = Plane::all();
         return $planes->toJson();
@@ -36,7 +36,7 @@ class PlanApiController extends Controller
      * @param  \App\Plane  $plane
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function ObtenerPlan($id)
     {
         $plane = Plane::all()->where('id_planes','=',$id);
         return $plane->toJson();

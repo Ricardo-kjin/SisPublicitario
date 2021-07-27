@@ -32,3 +32,8 @@ Route::group([
     Route::post('me', 'AuthController@me');
 
 });
+
+
+// Api
+Route::get('/obtenerPlanes', 'PlanApiController@obtenerPlanes');
+Route::get('/obtenerPlan/{id}', 'PlanApiController@obtenerPlan');

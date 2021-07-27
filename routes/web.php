@@ -60,9 +60,6 @@ Route::resource('/zonas', 'ZonaController');
 Route::resource('/tipoinmuebles', 'TipoInmuebleController');
 
 
-// Api
-Route::get('/planesApi', 'PlanApiController@index')->name('planes.index');
-Route::get('/planesApi/{id}', 'PlanApiController@show')->name('planes.show');
 
 Route::resource('/inmuebles','InmuebleController');
 Route::resource('/proyectos','ProyectoController');
@@ -76,8 +73,8 @@ Route::resource('/lotes', 'LoteController');
 Route::resource('/planes','PlaneController');//Y
 Route::resource('/tipopagos','TipopagoController');//Y
 Route::resource('/ofertas','OfertaController');//Y
-Route::resource('/facturas','FecturaController');
-Route::resource('/notaventas','NotaventaController');
+//Route::resource('/facturas','FecturaController');
+//Route::resource('/notaventas','NotaventaController');
 
 //PUBLICAIONES
 
