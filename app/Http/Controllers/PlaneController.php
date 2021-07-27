@@ -14,15 +14,10 @@ class PlaneController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
 
         $planes = Plane::all();
         return view('planes.index');
 
-=======
-        $planes=Plane::where('estado','1')->orderBy('id_planes','desc')->get();
-        return view('venta.planes.index',['planes'=>$planes]);
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
     }
 
     /**
@@ -32,15 +27,10 @@ class PlaneController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
 
        
         return view('venta.planes.create');
 
-=======
-        //
-        return view('venta.planes.create');
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
     }
 
     /**
@@ -51,15 +41,6 @@ class PlaneController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-=======
-        //
-        $request->validate([
-            'nombre'=>'required|max:150',
-            'descripcion'=>'required|max:700',
-        ]);
-
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
         $plane=new Plane();
         $plane->nombre=$request->nombre;
         $plane->descripcion=$request->descripcion;
@@ -76,14 +57,10 @@ class PlaneController extends Controller
      */
     public function show(Plane $plane)
     {
-<<<<<<< HEAD
 
 
         return view('venta.planes.create',['plane'=>$plane]);
 
-=======
-        return view('venta.planes.create',['plane'=>$plane]);
->>>>>>> d13136fc37c86d10b67a32b9ed833c4febced35b
     }
 
     /**
