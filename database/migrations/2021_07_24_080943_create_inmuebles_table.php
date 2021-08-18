@@ -23,26 +23,14 @@ class CreateInmueblesTable extends Migration
             $table->integer('baños')->nullable(); //X
             $table->integer('pisos')->nullable();
             $table->integer('garajes')->nullable();
-            $table->integer('total_cupo')->nullable();
-            $table->integer('cupo_ocupado')->nullable();
-
-
-            //$table->string('image_url');
-
-
-            $table->text('descripcion');
             $table->string('foto_principal')->nullable();
-            $table->unsignedInteger('proyecto_id')->nullable();
-            $table->unsignedInteger('user_id');
+            $table->string('servicio')->nullable();
+            $table->string('tipo_inmueble');
             $table->unsignedInteger('zona_id');
-            $table->unsignedInteger('tipoinmueble_id');
             $table->timestamps();
 
-
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('zona_id')->references('id')->on('zonas');
-            $table->foreign('tipoinmueble_id')->references('id')->on('tipo_inmuebles');
-            $table->foreign('proyecto_id')->references('id')->on('inmuebles');
+            $table->foreign('zona_id')->references('id')->on('zonas')
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

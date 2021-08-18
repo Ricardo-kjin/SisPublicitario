@@ -19,7 +19,8 @@ class InmuebleController extends Controller
     public function index()
     {
         //->where('proyecto_id',!null)
-        $inmuebles=Inmueble::where('user_id',Auth::user()->id)->orderBy('id','desc')->get();
+       /*  $inmuebles=Inmueble::where('user_id',Auth::user()->id)->orderBy('id','desc')->get(); */
+        $inmuebles=Inmueble::orderBy('id','desc')->get();
         return view('inmueble.inmuebles.index',['inmuebles'=>$inmuebles]);
     }
 
@@ -33,6 +34,7 @@ class InmuebleController extends Controller
         $zonas=Zona::orderBy('id')->get();
         $servicios=Servicio::orderBy('id')->get();
         // $tipoinmuebles=TipoInmueble::orderBy('id')->get();
+        /* $proyectos=Inmueble::where('user_id',Auth::user()->id)->where('proyecto_id',null)->where('total_cupo','!=',null)->orderBy('id','desc')->get(); */
         $proyectos=Inmueble::where('user_id',Auth::user()->id)->where('proyecto_id',null)->where('total_cupo','!=',null)->orderBy('id','desc')->get();
         // dd($proyectos);
         return view('inmueble.inmuebles.create',['zonas'=>$zonas,'servicios'=>$servicios,'proyectos'=>$proyectos]);

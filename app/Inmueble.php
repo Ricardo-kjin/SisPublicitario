@@ -6,7 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inmueble extends Model
 {
+    protected $table='inmuebles';
 
+    protected $fillable =[
+        'direccion',
+        'area_terreno',
+        'area_construida',
+        'area_libre',
+        'habitaciones',
+        'baños',
+        'pisos',
+        'garajes',
+        'foto_principal',
+        'servicio',
+        'tipo_inmueble',
+        'zona_id',
+    ];
     //muchos inmuebles pertenece a una zona
 
     public function zona (){
